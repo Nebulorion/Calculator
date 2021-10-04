@@ -1,2 +1,2 @@
 # Calculator
- Equation Calculator
+ Калькулятор уравнений 
