@@ -26,8 +26,8 @@ class Interface:
 
         self.root.mainloop()
 
-    def checkTypeOfEq(self, eq):
-
+    @staticmethod
+    def checkTypeOfEq(eq):
         if 'x' in eq:
             # Уравнение вида ax+b=0(пользователь не вводит 0)
             if '=' == eq[len(eq) - 1] or '=' not in eq:

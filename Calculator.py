@@ -1,5 +1,6 @@
 from sympy import *
 from sympy.parsing.sympy_parser import parse_expr
+from sympy import sin, cos
 
 
 class Calculator:
