@@ -19,15 +19,17 @@ class Interface:
         self.eq = ""
         self.calculator = Calculator()
         self.root = Tk()
+        self.calc_entry = Entry(self.root, width=33)
+
+    def buildInterface(self):
+        #self.root = Tk()
         self.root.title("Calculator")
         self.setButtons(self.root)
-        self.calc_entry = Entry(self.root, width=33)
+        #self.calc_entry = Entry(self.root, width=33)
         self.calc_entry.grid(row=0, column=0, columnspan=3)
-
         self.root.mainloop()
 
-    @staticmethod
-    def checkTypeOfEq(eq):
+    def checkTypeOfEq(self, eq):
         if 'x' in eq:
             # Уравнение вида ax+b=0(пользователь не вводит 0)
             if '=' == eq[len(eq) - 1] or '=' not in eq:
@@ -39,7 +41,6 @@ class Interface:
         if 'x' not in eq:
             return 'exp'
 
-    @staticmethod
     def setNewSymbolToEq(self, i):
         if i not in buttons:
             messagebox.showerror("Error!", "Enter a number or a function")
@@ -68,7 +69,6 @@ class Interface:
         print(self.eq)
         self.calc_entry.insert(END, i)
 
-    @staticmethod
     def solveEq(self):
         expression = self.calc_entry.get()
         type = self.checkTypeOfEq(expression)
@@ -85,15 +85,16 @@ class Interface:
         self.calc_entry.delete(0, END)
         self.calc_entry.insert(END, "Ответ: x = " + str(result))
         print(result)
+        return result
 
     def setButtons(self, root):
         r = 1
         c = 0
         for i in buttons:
-            cmd = lambda x=i: self.setNewSymbolToEq(self, x)
+            cmd = lambda x=i: self.setNewSymbolToEq(x)
             ttk.Button(root, text=i, command=cmd, width=10).grid(row=r, column=c)
             c += 1
             if c > 3:
                 c = 0
                 r += 1
-        ttk.Button(root, text='SOLVE IT', command=lambda: self.solveEq(self), width=10).grid(row=0, column=3)
+        ttk.Button(root, text='SOLVE IT', command=lambda: self.solveEq(), width=10).grid(row=0, column=3)
