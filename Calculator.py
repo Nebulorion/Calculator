@@ -6,23 +6,20 @@ from sympy import sin, cos
 class Calculator:
 
     # метод решения уравнений
-    @staticmethod
-    def solveEq(eq_left, eq_right):
+
+    def solveEq(self, eq_left, eq_right):
         a, b, y, x = symbols('a b y x')
         left = parse_expr(eq_left)
         right = parse_expr(eq_right)
         return solve(Eq(left, right), x)
 
-    @staticmethod
-    def solveEqi(eq):
+    def solveEqi(self, eq):
         a, b, y, x = symbols('a b y x')
         expr = parse_expr(eq)
         return solve(expr, x)
 
-    @staticmethod
-    def solveExp(exp):
+    def solveExp(self, exp):
         return parse_expr(exp)
 
-    @staticmethod
-    def separateEq(eq):
+    def separateEq(self, eq):
         return str(eq).split('=')
