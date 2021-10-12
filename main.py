@@ -1,15 +1,3 @@
-from interface import Interface
+from interface import *
 
-Interface()
-
-
-
-
-
-
-
-
-
-
-
-
+Interface().buildInterface()
